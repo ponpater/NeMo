@@ -70,7 +70,7 @@
 
 #     def __len__(self):
 #         return len(self.mcore_retro_dataset.chunk_dataset.sample_dataset)
-    
+
 #     def _get_text(self, idx: int):
 #         # return the tokens ids of idx
 #         # Caveat: these tokens are got from the already pre-tokenized data file, mcore's GPTDataset doesn't run __getitem__, only run _query_document_sample_shuffle_indices
@@ -114,8 +114,6 @@
 #         neighbor_attention_mask = torch.zeros([1, 1])  # just a dummy values, since the batch neighbor_attention_mask will be set to None in megatron_retro_model.py following Lawrence's implementation
 
 
-
-
 #         return {
 #             'tokens': tokens,
 #             'labels': labels,
@@ -152,20 +150,20 @@
 #     )
 
 #     train_ds = RETRODataset(
-#         cfg = cfg, 
-#         retro_config = retro_config, 
+#         cfg = cfg,
+#         retro_config = retro_config,
 #         tokenizer = tokenizer,
 #         mcore_retro_dataset = retro_train_ds,
 #         number_samples_with_neighbors=train_valid_test_num_samples[0]) if retro_train_ds else None
 #     valid_ds = RETRODataset(
-#         cfg = cfg, 
-#         retro_config = retro_config, 
+#         cfg = cfg,
+#         retro_config = retro_config,
 #         tokenizer = tokenizer,
 #         mcore_retro_dataset = retro_valid_ds,
 #         number_samples_with_neighbors=train_valid_test_num_samples[1]) if retro_valid_ds else None
 #     test_ds = RETRODataset(
-#         cfg = cfg, 
-#         retro_config = retro_config, 
+#         cfg = cfg,
+#         retro_config = retro_config,
 #         tokenizer = tokenizer,
 #         mcore_retro_dataset = retro_test_ds,
 #         number_samples_with_neighbors=train_valid_test_num_samples[2]) if retro_test_ds else None

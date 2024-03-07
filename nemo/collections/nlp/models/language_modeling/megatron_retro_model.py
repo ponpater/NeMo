@@ -149,7 +149,7 @@
 #             cfg.data.data_prefix = data_path
 #             cfg.encoder_seq_length = retro_preprocess_config.retro_gpt_seq_length
 #             cfg.data.seq_length = retro_preprocess_config.retro_gpt_seq_length
-#             cfg.max_position_embeddings = retro_preprocess_config.retro_gpt_seq_length           
+#             cfg.max_position_embeddings = retro_preprocess_config.retro_gpt_seq_length
 #             # cfg.data.splits_string = retro_preprocess_config.retro_gpt_split      # remove because lastest RETRO data-object have separate RETRO training split and RETRO preprocessing split
 #             cfg.tokenizer.model = retro_preprocess_config.retro_gpt_tokenizer_model
 #             cfg.tokenizer.type = retro_preprocess_config.retro_gpt_tokenizer_type
@@ -363,11 +363,11 @@
 #                     extra_arg['set_inference_key_value_memory'] = set_inference_key_value_memory[0].item()
 #                     extra_arg['inference_max_sequence_len'] = inference_max_sequence_len[0].item()
 #             output_tensor = model(
-#                 tokens, 
-#                 position_ids, 
-#                 attention_mask, 
-#                 context_input_ids=context_input_ids, 
-#                 context_position_ids=context_position_ids, 
+#                 tokens,
+#                 position_ids,
+#                 attention_mask,
+#                 context_input_ids=context_input_ids,
+#                 context_position_ids=context_position_ids,
 #                 context_mask=None,   # batch neighbor_attention_mask will be set to None following Lawrence's implementation
 #                 **extra_arg)
 
