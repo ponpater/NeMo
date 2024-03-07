@@ -336,9 +336,9 @@ class MegatronBaseModel(NLPModel):
             # Don't reconfigure if limit_val_batches is 0.0
             if self.trainer.limit_val_batches == 0.0:
                 return
-            # len(self._validation_dl) returns len as num of microbatches
-            val_len_in_micro_batches = len(self._validation_dl)
-            if self._validation_ds is not None and len(self._validation_dl) != float("inf"):
+            if len(self._validation_dl) != float("inf"):
+                # len(self._validation_dl) returns len as num of microbatches
+                val_len_in_micro_batches = len(self._validation_dl)
                 if self.trainer.limit_val_batches == 1.0:
                     self.trainer.limit_val_batches = val_len_in_micro_batches
                 else:
