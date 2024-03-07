@@ -83,7 +83,7 @@ def instantiate_multinode_ddp_if_possible():
     num_gpus = torch.cuda.device_count()
     ## Change logger=None to logger=False to support PTL 2.0
     trainer = Trainer(devices=num_gpus, accelerator='gpu', strategy='ddp', logger=False, enable_checkpointing=False)
-    exp_manager_cfg = ExpManagerConfig(exp_dir='./ddp_check/', use_datetime_version=False, version="")
+    exp_manager_cfg = ExpManagerConfig(exp_dir='./ddp_check/', use_datetime_version=False, version="", explicit_log_dir="./ddp_check/log_dir")
     exp_manager(trainer, cfg=OmegaConf.structured(exp_manager_cfg))
     return trainer
 
@@ -112,7 +112,7 @@ def get_rank_info(texts: list, rank_key: str) -> int:
 
 @rank_zero_only
 def check_model_ranks(model: ExampleModel):
-    basedir = os.path.join('./ddp_check/', 'default', 'version_0')
+    basedir = os.path.join('./ddp_check/', 'log_dir')
     file_template = "nemo_log_globalrank-{rank}_localrank-{rank}.txt"
 
     world_size = torch.cuda.device_count()
